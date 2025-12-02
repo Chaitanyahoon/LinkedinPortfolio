@@ -1,16 +1,31 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Outfit } from "next/font/google"
 import "./globals.css"
+import { CustomCursor } from "@/components/ui/custom-cursor"
+import { ScrollProgress } from "@/components/ui/scroll-progress"
 
-const inter = Inter({ subsets: ["latin"] })
+const outfit = Outfit({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Chaitanya Patil - Full Stack Developer",
+  title: {
+    default: "Chaitanya Patil - Full Stack Developer",
+    template: "%s | Chaitanya Patil",
+  },
   description:
-    "Portfolio of Chaitanya Patil, a passionate full stack developer specializing in React, Node.js, and modern web technologies.",
-  keywords: ["Full Stack Developer", "React", "Node.js", "JavaScript", "TypeScript", "Web Development"],
-  authors: [{ name: "Chaitanya Patil" }],
+    "Portfolio of Chaitanya Patil, a passionate full stack developer specializing in React, Node.js, and modern web technologies. Building scalable and beautiful digital experiences.",
+  keywords: [
+    "Full Stack Developer",
+    "React Developer",
+    "Node.js Developer",
+    "Web Development",
+    "JavaScript",
+    "TypeScript",
+    "Next.js",
+    "Portfolio",
+    "Chaitanya Patil",
+  ],
+  authors: [{ name: "Chaitanya Patil", url: "https://chaitanyapatil.dev" }],
   creator: "Chaitanya Patil",
   openGraph: {
     type: "website",
@@ -20,6 +35,14 @@ export const metadata: Metadata = {
     description:
       "Portfolio of Chaitanya Patil, a passionate full stack developer specializing in React, Node.js, and modern web technologies.",
     siteName: "Chaitanya Patil Portfolio",
+    images: [
+      {
+        url: "/og-image.png", // Ensure you have an og-image.png in public/
+        width: 1200,
+        height: 630,
+        alt: "Chaitanya Patil Portfolio",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -27,6 +50,7 @@ export const metadata: Metadata = {
     description:
       "Portfolio of Chaitanya Patil, a passionate full stack developer specializing in React, Node.js, and modern web technologies.",
     creator: "@chaitanyapatil",
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
@@ -39,7 +63,8 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-    generator: 'Next.js',
+  manifest: "/site.webmanifest",
+  generator: "Next.js",
 }
 
 export default function RootLayout({
@@ -49,8 +74,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
-        <div className="font-bold text-2xl premium-heading" style={{ padding: '0.5rem' }}>CP</div>
+      <body className={outfit.className}>
+        <CustomCursor />
+        <ScrollProgress />
+
         {children}
       </body>
     </html>
